@@ -1,0 +1,355 @@
+openapi: 3.0.3
+info:
+  title: API de Universidad
+  description: Documentación de la API de la Universidad
+  version: 1.0.0
+paths:
+  /api/estudiantes:
+    get:
+      summary: Obtener todos los estudiantes
+      operationId: getEstudiantes
+      responses:
+        '200':
+          description: Lista de estudiantes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Estudiante'
+
+    post:
+      summary: Crear un nuevo estudiante
+      operationId: createEstudiante
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Estudiante'
+      responses:
+        '201':
+          description: Estudiante creado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Estudiante'
+
+  /api/estudiantes/{id}:
+    get:
+      summary: Obtener un estudiante por ID
+      operationId: getEstudianteById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del estudiante
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Estudiante encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Estudiante'
+        '404':
+          description: Estudiante no encontrado
+
+    put:
+      summary: Actualizar un estudiante
+      operationId: updateEstudiante
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del estudiante
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Estudiante'
+      responses:
+        '200':
+          description: Estudiante actualizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Estudiante'
+        '404':
+          description: Estudiante no encontrado
+
+    delete:
+      summary: Eliminar un estudiante
+      operationId: deleteEstudiante
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del estudiante
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Estudiante eliminado
+        '404':
+          description: Estudiante no encontrado
+
+  /api/calificaciones:
+    get:
+      summary: Obtener todas las calificaciones
+      operationId: getCalificaciones
+      responses:
+        '200':
+          description: Lista de calificaciones
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Calificacion'
+
+    post:
+      summary: Crear una nueva calificación
+      operationId: createCalificacion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Calificacion'
+      responses:
+        '201':
+          description: Calificación creada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Calificacion'
+
+  /api/calificaciones/{id}:
+    get:
+      summary: Obtener una calificación por ID
+      operationId: getCalificacionById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de la calificación
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Calificación encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Calificacion'
+        '404':
+          description: Calificación no encontrada
+
+    put:
+      summary: Actualizar una calificación
+      operationId: updateCalificacion
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de la calificación
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Calificacion'
+      responses:
+        '200':
+          description: Calificación actualizada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Calificacion'
+        '404':
+          description: Calificación no encontrada
+
+    delete:
+      summary: Eliminar una calificación
+      operationId: deleteCalificacion
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de la calificación
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Calificación eliminada
+        '404':
+          description: Calificación no encontrada
+
+  /api/cursos:
+    get:
+      summary: Obtener todos los cursos
+      operationId: getCursos
+      responses:
+        '200':
+          description: Lista de cursos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Curso'
+
+    post:
+      summary: Crear un nuevo curso
+      operationId: createCurso
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Curso'
+      responses:
+        '201':
+          description: Curso creado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Curso'
+
+  /api/cursos/{id}:
+    get:
+      summary: Obtener un curso por ID
+      operationId: getCursoById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del curso
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Curso encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Curso'
+        '404':
+          description: Curso no encontrado
+
+    put:
+      summary: Actualizar un curso
+      operationId: updateCurso
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del curso
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Curso'
+      responses:
+        '200':
+          description: Curso actualizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Curso'
+        '404':
+          description: Curso no encontrado
+
+    delete:
+      summary: Eliminar un curso
+      operationId: deleteCurso
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del curso
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Curso eliminado
+        '404':
+          description: Curso no encontrado
+
+components:
+  schemas:
+    Estudiante:
+      type: object
+      properties:
+        id:
+          type: integer
+        nombre:
+          type: string
+        apellido:
+          type: string
+        email:
+          type: string
+        fecha_nacimiento:
+          type: string
+          format: date
+
+    Calificacion:
+      type: object
+      properties:
+        id:
+          type: integer
+        nota:
+          type: number
+          format: float
+        fecha_registro:
+          type: string
+          format: date-time
+        matricula:
+          $ref: '#/components/schemas/Matricula'
+
+    Curso:
+      type: object
+      properties:
+        id:
+          type: integer
+        nombre:
+          type: string
+        credito:
+          type: integer
+        profesor:
+          $ref: '#/components/schemas/Profesor'
+
+    Profesor:
+      type: object
+      properties:
+        id:
+          type: integer
+        nombre:
+          type: string
+        apellido:
+          type: string
+        especialidad:
+          type: string
+
+    Matricula:
+      type: object
+      properties:
+        id:
+          type: integer
+        fecha_matricula:
+          type: string
+          format: date-time
+        estudiante:
+          $ref: '#/components/schemas/Estudiante'
+        curso:
+          $ref: '#/components/schemas/Curso'
